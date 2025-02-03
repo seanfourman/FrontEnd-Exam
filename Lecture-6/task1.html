@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+      .container {
+        display: flex;
+      }
+      .container > div {
+        padding: 20px;
+        border: 1px solid black;
+      }
+      .container > div.light {
+        background-color: red;
+        box-shadow: inset 0 10px 0 0 white, inset -10px 0 0 0 white, inset 0 -10px 0 0 white, inset 10px 0 0 0 white;
+      }
+
+      .green {
+        background-color: yellowgreen;
+      }
+
+      .green-result {
+        box-shadow: inset 0 10px 0 0 white, inset -10px 0 0 0 white, inset 0 -10px 0 0 white, inset 10px 0 0 0 white;
+        background-color: yellowgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div onclick="divClick(this)">-1</div>
+      <div onclick="divClick(this)">-1</div>
+      <div onclick="divClick(this)">-1</div>
+      <div class="light"></div>
+    </div>
+
+    <script>
+      let counter = 0;
+      const light = document.querySelector(".light");
+      function divClick(element) {
+        if (!element.classList.contains("green")) {
+          element.classList.add("green");
+          counter++;
+          element.innerHTML = "1";
+          if (counter === 3) {
+            light.classList.remove("light");
+            light.classList.add("green-result");
+          }
+        } else {
+          counter--;
+          element.innerHTML = "-1";
+          element.classList.remove("green");
+          light.classList.add("light");
+          light.classList.remove("green-result");
+        }
+      }
+    </script>
+  </body>
+</html>

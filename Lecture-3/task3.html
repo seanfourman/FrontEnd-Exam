@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      header {
+        padding: 20px;
+        text-align: center;
+        background-color: #8d2bda;
+        color: white;
+      }
+
+      nav {
+        display: flex;
+        background-color: lightgray;
+        justify-content: center;
+        text-align: center;
+        gap: 20px;
+        padding: 10px 0px;
+        font-weight: bold;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .container div {
+        width: 95%;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+      }
+
+      div h1,
+      div p {
+        padding-left: 20px;
+      }
+
+      footer {
+        margin-top: 20px;
+        background-color: #383a3c;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .card:nth-child(2) {
+        background-color: #f6ebdb;
+      }
+
+      .card:nth-child(3) {
+        background-color: #05f9f8;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>CSS Practice Exercise</h1>
+    </header>
+    <nav>
+      <a>Home</a>
+      <a>About</a>
+      <a>Services</a>
+      <a>Contact</a>
+    </nav>
+    <main>
+      <div class="container">
+        <div class="card">
+          <h1>Card 1</h1>
+          <p>This is the content of the first card. It showcases the use of CSS to create a simple card layout with a box shadow and rounded corners.</p>
+        </div>
+        <div class="card">
+          <h1>Card 2</h1>
+          <p>This is the content of the second card. It also uses the same CSS styles as the first card to maintain a consistent visual appearance.</p>
+        </div>
+        <div class="card">
+          <h1>Card 3</h1>
+          <p>This is the content of the third card. It demonstrates the application of CSS to create a clean and modern-looking layout.</p>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2024 CSS Practice Exercise</p>
+    </footer>
+  </body>
+</html>

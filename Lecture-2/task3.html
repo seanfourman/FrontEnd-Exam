@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0px;
+      }
+      div {
+        height: 100px;
+      }
+      #pink-yellow {
+        display: flex;
+        flex-direction: row;
+      }
+
+      #pink {
+        width: 40%;
+        background-color: pink;
+      }
+      #yellow {
+        width: 60%;
+        background-color: yellow;
+      }
+      #red {
+        background-color: red;
+      }
+
+      #purple {
+        background-color: purple;
+      }
+
+      #green {
+        width: 80%;
+        background-color: green;
+      }
+
+      #red-purple {
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+      }
+
+      #red-purple-green {
+        display: flex;
+        flex-direction: row;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="pink-yellow">
+      <div id="pink">A-40%</div>
+      <div id="yellow">B-60%</div>
+    </div>
+    <div id="red-purple-green">
+      <div id="red-purple">
+        <div id="red">C-20%</div>
+        <div id="purple">D-20%</div>
+      </div>
+      <div id="green">E-80%</div>
+    </div>
+  </body>
+</html>

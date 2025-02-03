@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      table {
+        text-align: center;
+      }
+
+      td {
+        width: 250px;
+        border: 1px solid black;
+      }
+
+      td:nth-child(2) {
+        color: green;
+      }
+
+      td :nth-child(2) {
+        font-size: 24px;
+      }
+
+      /* solve without using id: */
+      /* tr:nth-child(2) td:nth-child(1) p:nth-child(2) */
+      #redText {
+        color: red;
+      }
+
+      div {
+        height: 30px;
+        width: 100%;
+        text-align: center;
+        font-size: 24px;
+        margin-top: 20px;
+      }
+
+      #firstDIV {
+        background-color: green;
+      }
+
+      #secondDIV {
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <p>p11</p>
+          <p>p12</p>
+        </td>
+        <td>
+          <p>p13</p>
+          <p>p14</p>
+        </td>
+      </tr>
+      <tr>
+        <td id="redText">
+          <p>p21</p>
+          <p>p22</p>
+        </td>
+        <td>
+          <p>p23</p>
+          <p>p24</p>
+        </td>
+      </tr>
+    </table>
+
+    <div id="firstDIV">p31</div>
+    <div id="secondDIV">p32</div>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <style type="text/css">
+      body {
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      }
+      img {
+        height: 150px;
+      }
+      button {
+        margin-right: 30px;
+        width: 100px;
+      }
+      div {
+        margin: 10px;
+      }
+      #numOfToys {
+        margin: 20px;
+      }
+      button {
+        width: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <h4>Click the buttons to add to the cart</h4>
+    <div id="ph"></div>
+    <div>
+      <a href="task2 - pay.html"><img src="images/cart.png" /></a><span id="numOfToys"></span>
+    </div>
+    <h4>Click on the cart image to proceed to payment</h4>
+    <div><button onclick="clearCart()">clear cart</button></div>
+
+    <script>
+      let cart = [];
+      let toys = [
+        { name: "robot", price: 100 },
+        { name: "doll", price: 70 },
+        { name: "ball", price: 30 },
+        { name: "monopoly", price: 65 }
+      ];
+
+      var counter = 0;
+
+      init();
+
+      function init() {
+        //clear localStorage cart
+        if (localStorage["cart"] != undefined) {
+          localStorage.removeItem("cart");
+          //localStorage["cart"] = [];
+        }
+        renderToys(toys);
+      }
+
+      // render the toys - create button for each toy with onclick event
+      function renderToys(toys) {
+        const buttonDiv = document.getElementById("ph");
+        const numOfToys = document.getElementById("numOfToys");
+        numOfToys.innerHTML = counter;
+        buttonDiv.innerHTML = "";
+
+        for (let toy of toys) {
+          const toyButton = document.createElement("button");
+          toyButton.innerHTML = toy.name;
+          toyButton.onclick = () => {
+            let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+            cart.push(toy);
+            localStorage.setItem("cart", JSON.stringify(cart)); // Save back to localStorage
+            counter++;
+            numOfToys.innerHTML = counter;
+            console.log(`Added to cart: ${toy.name}`, cart);
+          };
+          buttonDiv.appendChild(toyButton);
+        }
+      }
+
+      function clearCart() {
+        //localStorage["cart"] = [];
+        localStorage.removeItem("cart");
+        counter = 0;
+        numOfToys.innerHTML = counter;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deck of Cards</title>
+  </head>
+  <body>
+    <script>
+      class Card {
+        constructor(num, color) {
+          this.num = num;
+          this.color = color;
+        }
+
+        isEqualColor(color) {
+          return this.color === color;
+        }
+      }
+
+      class Deck {
+        constructor() {
+          this.cards = [];
+        }
+
+        createDeck() {
+          let nums = [1, 2, 3, 4, 5];
+          let colors = ["blue", "red", "green"];
+          this.cards = [];
+
+          for (let num of nums) {
+            for (let color of colors) {
+              this.cards.push(new Card(num, color));
+            }
+          }
+        }
+
+        shuffle() {
+          for (let i = this.cards.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]]; // Swap
+          }
+        }
+
+        drawRandomCard() {
+          if (this.cards.length === 0) return null;
+          let index = Math.floor(Math.random() * this.cards.length);
+          return this.cards.splice(index, 1)[0]; // Remove and return a random card
+        }
+
+        removeCardsByColor(color) {
+          let removedCards = this.cards.filter((card) => card.color === color);
+          this.cards = this.cards.filter((card) => card.color !== color);
+          return removedCards;
+        }
+      }
+
+      // Create and shuffle the deck
+      let mainDeck = new Deck();
+      mainDeck.createDeck();
+      mainDeck.shuffle();
+
+      console.log("Initial Deck Order:");
+      console.table(mainDeck.cards);
+
+      // Draw a random card
+      let drawnCard = mainDeck.drawRandomCard();
+      console.log(`\nRandomly drawn card:`, drawnCard);
+
+      // Move all cards of the drawn color to a new deck
+      let newDeck = new Deck();
+      newDeck.cards = mainDeck.removeCardsByColor(drawnCard.color);
+
+      console.log("\nUpdated Main Deck (10 cards):");
+      console.table(mainDeck.cards);
+
+      console.log("\nNew Deck (5 cards of drawn color):");
+      console.table(newDeck.cards);
+    </script>
+  </body>
+</html>

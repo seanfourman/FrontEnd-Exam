@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>DOM Examples</title>
+
+    <style type="text/css">
+      .container {
+        display: flex;
+        justify-content: left;
+      }
+      #leftDiv,
+      #rightDiv,
+      #textDiv {
+        width: 30%;
+        border: 1px solid black;
+      }
+      #text1 {
+        background-color: Yellow;
+      }
+      IMG {
+        height: 100px;
+      }
+      P {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="leftDiv">
+        <input type="text" id="text1" /> &nbsp;&nbsp;
+        <input type="button" value="Copy Text" onclick="addTextToDiv()" />
+        <br />
+        <br />
+        <br />
+        <img src="images/smiley.jpg" id="img1" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/Hsmiley.gif"" id="img2" />
+        <br />
+        <br />
+        <br />
+        <img src="images/Delete-icon.png" id="img3" />
+      </div>
+      <div id="rightDiv"></div>
+
+      <div id="textDiv">
+        <p>
+          1. onclick on the button - Copy the text to the right div <br /><br />
+          2. onmouseover on the smiley - Add the image to the right div
+          <br /><br />
+          3. onclick on the jewish smiley - change all the images in the right div to the jewish smiley <br /><br />
+          4. ondblclick on the eraser - remove all the content from the right div
+        </p>
+      </div>
+    </div>
+
+    <script>
+      const rightDiv = document.getElementById("rightDiv");
+      const inputBox = document.getElementById("text1");
+      const smiley = document.getElementById("img1");
+      const jewImage = document.getElementById("img2");
+      const eraserImage = document.getElementById("img3");
+
+      smiley.setAttribute("onmouseover", "putImageOnRight(this)");
+      jewImage.setAttribute("onclick", "changeToJew()");
+      eraserImage.setAttribute("ondblclick", "eraseAllImages()");
+
+      function addTextToDiv() {
+        let input = inputBox.value;
+        rightDiv.innerHTML += input;
+      }
+
+      function putImageOnRight(element) {
+        //rightDiv.innerHTML += '<img src="' + element.src + '">';
+        const img = document.createElement("img");
+        img.setAttribute("src", element.src);
+        img.setAttribute("class", "smiley");
+        rightDiv.appendChild(img);
+      }
+
+      function changeToJew() {
+        let allImages = document.querySelectorAll(".smiley");
+        allImages.forEach((image) => {
+          image.src = jewImage.src;
+        });
+      }
+
+      function eraseAllImages() {
+        rightDiv.innerHTML = "";
+      }
+    </script>
+  </body>
+</html>

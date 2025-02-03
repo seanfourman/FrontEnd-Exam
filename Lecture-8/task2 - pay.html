@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+      body {
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      }
+    </style>
+    <script>
+      function init() {
+        // get the cart from the localStorage and render
+        if (localStorage["cart"] != null) {
+          let cart = JSON.parse(localStorage.getItem("cart"));
+          renderCart(cart);
+        } else {
+          document.getElementById("ph").innerHTML = "<h1>empty cart!!!</h1>";
+        }
+      }
+
+      function renderCart(cart) {
+        let totalPrice = 0;
+        const title = document.createElement("h1");
+        title.innerHTML = "Your cart:";
+        document.body.appendChild(title);
+
+        const itemDiv = document.createElement("div");
+        for (i of cart) {
+          const item = document.createElement("p");
+          item.innerHTML = "Name: " + i.name + ", Price: " + i.price;
+          itemDiv.appendChild(item);
+          totalPrice += i.price;
+        }
+        const priceText = document.createElement("h1");
+        priceText.innerHTML = "Total Price: " + totalPrice;
+        document.body.appendChild(itemDiv);
+        document.body.appendChild(priceText);
+      }
+    </script>
+  </head>
+  <body onload="init()">
+    <div id="ph"></div>
+  </body>
+</html>

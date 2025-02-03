@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+      }
+
+      button {
+        background-color: lightskyblue;
+        border: 2px solid lightblue;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <button id="plus" onclick="subtractNum()">Minus One</button>
+      <span id="displayCounter">0</span>
+      <button id="minus" onclick="addNum()">Plus One</button>
+    </div>
+
+    <script>
+      let counter = 0;
+      const displayCounter = document.getElementById("displayCounter");
+      function subtractNum() {
+        if (counter === 0) {
+          return;
+        }
+        counter--;
+        displayCounter.innerHTML = counter;
+      }
+
+      function addNum() {
+        counter++;
+        displayCounter.innerHTML = counter;
+      }
+    </script>
+  </body>
+</html>

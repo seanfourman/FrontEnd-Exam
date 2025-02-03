@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .right {
+        text-align: right;
+      }
+      .left {
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="title">header</h1>
+    <input type="radio" name="option" onclick="textLeft()" />left<br />
+    <input type="radio" name="option" onclick="textRight()" />right<br />
+    <input id="textInput" /><br />
+    <button onclick="changeText()">button</button>
+
+    <script>
+      const title = document.querySelector("h1");
+      const inputBox = document.getElementById("textInput");
+      const button = document.querySelector("button");
+
+      function textLeft() {
+        title.classList.remove("right");
+        title.classList.add("left");
+      }
+      function textRight() {
+        title.classList.remove("left");
+        title.classList.add("right");
+      }
+      function changeText() {
+        button.innerHTML = textInput.value;
+      }
+    </script>
+  </body>
+</html>

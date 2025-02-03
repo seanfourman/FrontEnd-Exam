@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      td {
+        border: 1px solid #000;
+        width: 30px;
+        height: 30px;
+      }
+      .tdBlack {
+        background-color: black;
+      }
+      .tdWhite {
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="ph"></div>
+  </body>
+
+  <script>
+    const container = document.getElementById("ph");
+
+    function createBoard() {
+      const board = document.createElement("table");
+      container.appendChild(board);
+      for (i = 0; i < 8; i++) {
+        const boardRow = document.createElement("tr");
+        board.appendChild(boardRow);
+        if (i % 2 === 0) {
+          for (j = 0; j < 8; j++) {
+            const boardTile = document.createElement("td");
+            if (j % 2 === 0) {
+              boardTile.style.backgroundColor = "black";
+            }
+            boardRow.appendChild(boardTile);
+            boardTile.setAttribute("onclick", "colorChanger(this)");
+          }
+        } else {
+          for (j = 0; j < 8; j++) {
+            const boardTile = document.createElement("td");
+            if (j % 2 !== 0) {
+              boardTile.style.backgroundColor = "black";
+            }
+            boardRow.appendChild(boardTile);
+            boardTile.setAttribute("onclick", "colorChanger(this)");
+          }
+        }
+      }
+    }
+
+    createBoard();
+
+    function colorChanger(el) {
+      el.style.backgroundColor = "#007d00";
+    }
+  </script>
+</html>

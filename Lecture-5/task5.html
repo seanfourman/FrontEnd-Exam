@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+  </head>
+  <body>
+    <input id="firstNum" type="number" />
+    <select id="operation">
+      <option value="+">+</option>
+      <option value="-">-</option>
+    </select>
+    <input id="secondNum" type="number" />
+    <button onclick="calculate()">=</button>
+    <span id="result"></span>
+
+    <script>
+      const firstNum = document.getElementById("firstNum");
+      const secondNum = document.getElementById("secondNum");
+      const resultSpan = document.getElementById("result");
+
+      function calculate() {
+        let x = parseInt(firstNum.value);
+        let y = parseInt(secondNum.value);
+        let action = document.getElementById("operation").value;
+        let result;
+        if (action === "+") {
+          result = x + y;
+        } else if (action === "-") {
+          result = x - y;
+        }
+        resultSpan.innerHTML = result;
+      }
+    </script>
+  </body>
+</html>

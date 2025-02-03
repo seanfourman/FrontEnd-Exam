@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="he">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .box {
+        padding: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      var headers = ["header 1", "header 2", "header 3"];
+      var colors = ["green", "orange", "red"];
+
+      for (var i = 0; i < 3; i++) {
+        var div = document.createElement("div");
+        div.className = "box";
+        div.style.backgroundColor = colors[i];
+        div.innerText = headers[i];
+        div.addEventListener("click", function () {
+          changeColor(this);
+        });
+        div.addEventListener("dblclick", function () {
+          this.remove();
+        });
+
+        document.body.appendChild(div);
+      }
+
+      function changeColor(element) {
+        element.style.backgroundColor = "yellow";
+      }
+    </script>
+  </body>
+</html>

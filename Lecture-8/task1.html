@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const amsterdam = {
+        country: "Holland",
+        restaurants: {
+          thai: [
+            {
+              name: "Bangkok",
+              price: 100
+            },
+            {
+              name: "King Thai",
+              price: 50
+            },
+            {
+              name: "thai house",
+              price: 35
+            },
+            {
+              name: "zozo rest",
+              price: 50
+            },
+            {
+              name: "TomYam house",
+              price: 48
+            },
+            {
+              name: "Masaman",
+              price: 33
+            }
+          ],
+          indian: [
+            {
+              name: "Chapati",
+              price: 15
+            },
+            {
+              name: "Delhi Kitchen",
+              price: 60
+            },
+            {
+              name: "Pushkar delicates",
+              price: 25
+            },
+            {
+              name: "Bombay fire",
+              price: 30
+            }
+          ]
+        }
+      };
+
+      for (let key in amsterdam["restaurants"]) {
+        console.log(key);
+        for (let res in amsterdam.restaurants[key]) {
+          console.log(amsterdam.restaurants[key][res].name + "," + amsterdam.restaurants[key][res].price);
+        }
+      }
+
+      for (let key in amsterdam["restaurants"]) {
+        const checkboxDiv = document.createElement("div");
+
+        const checkboxButton = document.createElement("input");
+        checkboxButton.setAttribute("type", "checkbox");
+
+        const label = document.createElement("label");
+        label.innerHTML = key;
+        document.body.append(checkboxDiv);
+        checkboxDiv.append(checkboxButton);
+        checkboxDiv.append(label);
+        checkboxButton.addEventListener("change", function () {
+          if (this.checked) {
+            createRestaurants(key);
+          } else {
+            removeRestaurants(key);
+          }
+        });
+      }
+
+      function createRestaurants(restaurantType) {
+        const restaurantDiv = document.createElement("div");
+        restaurantDiv.setAttribute("id", restaurantType);
+        for (let res in amsterdam.restaurants[restaurantType]) {
+          const restInfo = document.createElement("p");
+          restInfo.innerHTML += amsterdam.restaurants[restaurantType][res].name + ": " + amsterdam.restaurants[restaurantType][res].price;
+          restaurantDiv.appendChild(restInfo);
+        }
+        document.body.appendChild(restaurantDiv);
+      }
+
+      function removeRestaurants(key) {
+        const menuInput = document.getElementById(key);
+        menuInput.remove();
+      }
+    </script>
+  </body>
+</html>

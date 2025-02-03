@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+
+      td {
+        border: 1px solid black;
+        padding: 5px;
+        text-align: center;
+      }
+
+      img {
+        height: 25px;
+      }
+
+      #lionImage {
+        height: 150px;
+      }
+
+      /* #titles :nth-child(-n+3) */
+      #titles :nth-child(1),
+      #titles :nth-child(2),
+      #titles :nth-child(3) {
+        background-color: yellow;
+      }
+
+      #titlesSecondary {
+        background-color: lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr id="titles">
+        <td>נתונים</td>
+        <td>תמונה</td>
+        <td>שם החיה</td>
+        <td rowspan="4">
+          <img src="https://i.pinimg.com/736x/1d/b0/96/1db09665876af52fa79b6a4b7429c9f3.jpg" />
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <table>
+            <tr id="titlesSecondary">
+              <td>ערך</td>
+              <td>קטגוריה</td>
+            </tr>
+            <tr>
+              <td>200 ק״ג</td>
+              <td>משקל</td>
+            </tr>
+            <tr>
+              <td>80 קמ״ש</td>
+              <td>מהירות</td>
+            </tr>
+            <tr>
+              <td>15 שנה</td>
+              <td>תוחלת חיים</td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <img id="lionImage" src="https://cdn.britannica.com/30/150930-120-D3D93F1E/lion-Namibia.jpg" />
+        </td>
+        <td>אריה</td>
+      </tr>
+
+      <tr>
+        <td colspan="3">הסרט האהוב עלי: מלך האריות</td>
+      </tr>
+    </table>
+  </body>
+</html>

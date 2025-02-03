@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let nums = [1, 2, 3, 4, 5];
+      let colors = ["blue", "red", "green"];
+
+      class Card {
+        constructor(color, type) {
+          this.color = color;
+          this.type = type;
+        }
+      }
+
+      let cards = [];
+      for (let i in nums) {
+        for (let j in colors) {
+          let card = new Card(nums[i], colors[j]);
+          cards.push(card);
+        }
+      }
+      console.log(cards);
+
+      function shuffle(a) {
+        let j;
+        for (let i = a.length - 1; i > 0; i--) {
+          j = Math.floor(Math.random() * i);
+          x = a[i];
+          a[i] = a[j];
+          a[j] = x;
+        }
+        return a;
+      }
+      cards = shuffle(cards);
+      console.log(cards);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deck of Cards</title>
+  </head>
+  <body>
+    <script>
+      let nums = [1, 2, 3, 4, 5];
+      let colors = ["blue", "red", "green"];
+
+      class Card {
+        constructor(num, color) {
+          this.num = num;
+          this.color = color;
+        }
+
+        isEqualColor(color) {
+          return this.color === color;
+        }
+      }
+
+      class Deck {
+        constructor() {
+          this.cards = [];
+        }
+
+        createDeck() {
+          this.cards = [];
+          for (let num of nums) {
+            for (let color of colors) {
+              this.cards.push(new Card(num, color));
+            }
+          }
+        }
+
+        shuffle() {
+          for (let i = this.cards.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]]; // Swap
+          }
+        }
+
+        addCard(card) {
+          this.cards.push(card);
+        }
+
+        removeCard(num, color) {
+          let index = this.cards.findIndex((card) => card.num === num && card.color === color);
+          if (index !== -1) {
+            return this.cards.splice(index, 1)[0]; // Remove and return the card
+          } else {
+            console.log(`Card with number ${num} and color ${color} not found!`);
+            return null;
+          }
+        }
+      }
+
+      let deck = new Deck();
+      deck.createDeck();
+
+      console.log("Initial Deck Order:");
+      console.table(deck.cards);
+
+      console.log("Checking color of first card:", deck.cards[0].isEqualColor("blue"));
+
+      deck.shuffle();
+      console.log("\nShuffled Deck Order:");
+      console.table(deck.cards);
+
+      let newCard = new Card(2, "red");
+      deck.addCard(newCard);
+      console.log("\nDeck after adding a new card:");
+      console.table(deck.cards);
+
+      let removedCard = deck.removeCard(3, "blue");
+      console.log("\nRemoved card:", removedCard);
+      console.log("Deck after removing a specific card:");
+      console.table(deck.cards);
+    </script>
+  </body>
+</html>

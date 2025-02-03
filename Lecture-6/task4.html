@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var arr1 = [3, "a", "a", "a", 2, 3, "a", 3, "a", 2, 4, 9, 3];
+      let dict = {};
+      let maxKey = null;
+      let maxCount = 0;
+
+      for (let i in arr1) {
+        let key = arr1[i];
+        if (key in dict) {
+          dict[key]++;
+        } else {
+          dict[key] = 1;
+        }
+
+        if (dict[key] > maxCount) {
+          maxCount = dict[key];
+          maxKey = key;
+        }
+      }
+      console.log(maxKey + " (" + maxCount + " times)");
+    </script>
+  </body>
+</html>

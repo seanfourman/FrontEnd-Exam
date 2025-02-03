@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Advanced Div and Float Layout</title>
+    <style>
+      body {
+        margin: 0px;
+      }
+      header {
+        background-color: #333;
+        padding: 30px;
+        text-align: center;
+        color: white;
+      }
+
+      header h1 {
+        margin: 0px;
+      }
+
+      nav {
+        background-color: lightgray;
+        padding: 10px;
+      }
+
+      nav a {
+        color: #333;
+        text-decoration: none;
+      }
+
+      nav a:nth-child(n + 2) {
+        margin-left: 20px;
+      }
+
+      div {
+        display: flex;
+      }
+
+      aside {
+        background-color: lightgray;
+        width: 15%;
+        padding: 10px;
+      }
+
+      section {
+        width: 85%;
+        padding: 20px;
+      }
+
+      footer {
+        color: white;
+        padding: 5px;
+        background-color: #333;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body style="font-family: Arial, sans-serif">
+    <header>
+      <h1>Advanced Layout Example</h1>
+    </header>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div>
+      <aside>
+        <h2>Sidebar</h2>
+        <ul>
+          <li><a href="#">Link 1</a></li>
+          <li><a href="#">Link 2</a></li>
+          <li><a href="#">Link 3</a></li>
+        </ul>
+      </aside>
+      <section>
+        <h2>Main Content</h2>
+        <p>This is the main content area of the page. It will appear to the right of the sidebar.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut risus in augue luctus venenatis.</p>
+      </section>
+    </div>
+    <footer>
+      <p>&copy; 2024 Client side course - Yael Sela Zeira</p>
+    </footer>
+  </body>
+</html>

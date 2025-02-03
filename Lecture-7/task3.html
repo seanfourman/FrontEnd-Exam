@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        border-collapse: collapse;
+        border: 2px solid black;
+      }
+
+      #container {
+        display: flex;
+        width: 650px;
+        height: 500px;
+        text-align: center;
+      }
+
+      #store {
+        width: 30%;
+      }
+
+      #basket {
+        width: 70%;
+      }
+      img {
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="store">
+        <h1>Store</h1>
+        <h2>Click to Add</h2>
+        <img class="fruit" src="https://www.applesfromny.com/wp-content/uploads/2020/05/20Ounce_NYAS-Apples2.png" />
+        <img class="fruit" src="https://www.mango.org/wp-content/themes/mango-child/css/img/bg-home-right-1.png" />
+        <img class="fruit" src="https://www.quanta.org/orange/orange.jpg" />
+      </div>
+      <div id="basket">
+        <h1>Basket</h1>
+        <h2>Double click to remove</h2>
+      </div>
+    </div>
+    <script>
+      const fruits = document.querySelectorAll(".fruit");
+      const basket = document.getElementById("basket");
+
+      fruits.forEach((fruit) =>
+        fruit.addEventListener("click", function () {
+          addToBasket(this);
+        })
+      );
+
+      function addToBasket(element) {
+        const fruit = document.createElement("img");
+        fruit.setAttribute("src", element.src);
+        basket.appendChild(fruit);
+        fruit.addEventListener("dblclick", fruit.remove);
+      }
+    </script>
+  </body>
+</html>

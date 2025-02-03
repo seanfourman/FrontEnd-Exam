@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      Search the site:
+      <input type="text" />
+      <input type="button" value="Search!" />
+    </div>
+    <div id="search-person">
+      Search the visitors:
+      <table id="age-table">
+        <tr>
+          <td>Age:</td>
+          <td id="age-list">
+            <input type="radio" name="age" value="young" />less than 18 <input type="radio" name="age" value="mature" />18-50 <input type="radio" name="age" value="senior" />more than 50
+          </td>
+        </tr>
+        <tr>
+          <td>Additionally:</td>
+          <td>
+            <input type="text" />
+            <input type="text" />
+            <input type="text" />
+          </td>
+        </tr>
+      </table>
+      <input type="button" value="Search!" />
+    </div>
+
+    <script>
+      const tableAge = document.getElementById("age-table");
+      const inputTable = document.querySelectorAll("#age-table input");
+      const firstTD = document.querySelector("#age-table td");
+      const divInput = document.querySelectorAll("#search-person input");
+
+      console.log(tableAge);
+      console.log(inputTable);
+      console.log(firstTD);
+      console.log(divInput);
+    </script>
+  </body>
+</html>
