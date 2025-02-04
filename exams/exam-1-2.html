@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="hpList.js"></script>
+    <style>
+      #data {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .movieDiv {
+        width: 80%;
+        /*height: 100px;*/
+        background-color: beige;
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .movieDiv div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      button {
+        max-width: 90px;
+      }
+
+      img {
+        height: 100px;
+      }
+
+      .hide {
+        display: none !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Harry Potter Rating</h1>
+    <!-- Main title of the page -->
+    <div id="data"></div>
+    <!-- Container for dynamically generated movie data -->
+    <div><button onclick="nextPage()">Next Page</button></div>
+    <!-- Button to navigate to the next page -->
+  </body>
+  <script>
+    const container = document.getElementById("data");
+    let counter = 0;
+    for (let movie of list["Harry Potter Movies List"]) {
+      counter++;
+      //console.log(movie.original_title);
+      const movieDiv = document.createElement("div");
+      //movieDiv.className = "movieDiv";
+      movieDiv.classList.add("movieDiv");
+      movieDiv.id = movie;
+      container.appendChild(movieDiv);
+
+      const movieTitle = document.createElement("h4");
+      movieTitle.innerHTML = counter + ") " + movie.original_title;
+      movieDiv.appendChild(movieTitle);
+
+      const movieButton = document.createElement("button");
+      movieButton.innerHTML = "more details";
+      movieDiv.appendChild(movieButton);
+
+      movieDiv.onclick = function () {
+        if (descriptionDiv.className === "hide") {
+          descriptionDiv.classList.remove("hide");
+          localStorage.setItem(movie.title, movie.overview);
+        } else {
+          descriptionDiv.className = "hide";
+          localStorage.removeItem(movie.title);
+        }
+      };
+
+      const descriptionDiv = document.createElement("div");
+      const movieImage = document.createElement("img");
+      movieImage.src = movie.poster_path;
+      descriptionDiv.append(movieImage);
+      const movieDescription = document.createElement("p");
+      movieDescription.innerHTML = movie.overview;
+      descriptionDiv.append(movieDescription);
+      movieDiv.append(descriptionDiv);
+      descriptionDiv.className = "hide";
+    }
+  </script>
+</html>

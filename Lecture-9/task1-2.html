@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+      body {
+        font-family: Calibri;
+        width: 50%;
+      }
+      h1 {
+        font-size: xx-large;
+        color: darkorange;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Band Information</h1>
+    <script>
+      let obj = {
+        bands: [
+          {
+            name: "Metallica",
+            description:
+              "Metallica is an American heavy metal band. The band was formed in 1981 in Los Angeles by vocalist/guitarist James Hetfield and drummer Lars Ulrich, and has been based in San Francisco for most of its career.",
+            image: "metallica.jpg",
+            year_established: 1981
+          },
+          {
+            name: "U2",
+            description:
+              "U2 are an Irish rock band from Dublin, formed in 1976. The group consists of Bono (lead vocals and rhythm guitar), the Edge (lead guitar, keyboards, and backing vocals), Adam Clayton (bass guitar), and Larry Mullen Jr. (drums and percussion).",
+            image: "u2.jpg",
+            year_established: 1976
+          },
+          {
+            name: "Abba",
+            description: "ABBA are a Swedish pop group formed in Stockholm in 1972 by Agnetha Fältskog, Björn Ulvaeus, Benny Andersson, and Anni-Frid Lyngstad.",
+            image: "abba.jpg",
+            year_established: 1972
+          },
+          {
+            name: "The Beatles",
+            description:
+              "The Beatles were an English rock band formed in Liverpool in 1960. With a line-up comprising John Lennon, Paul McCartney, George Harrison and Ringo Starr, they are regarded as the most influential band of all time[1] and were integral to the development of 1960s counterculture and popular music's recognition as an art form.",
+            image: "beatles.jpg",
+            year_established: 1960
+          }
+        ]
+      };
+
+      const bandSelector = document.createElement("select");
+      const firstOption = document.createElement("option");
+      firstOption.innerHTML = "--select band--";
+      bandSelector.appendChild(firstOption);
+      for (band of obj["bands"]) {
+        const bandOption = document.createElement("option");
+        bandOption.innerHTML = band.name;
+        bandSelector.appendChild(bandOption);
+      }
+      document.body.appendChild(bandSelector);
+
+      bandSelector.addEventListener("change", displayBand);
+
+      function displayBand() {
+        let selectedBand = bandSelector.value;
+        if (selectedBand === "--select band--") {
+          if (document.getElementById("bandDiv")) {
+            document.getElementById("bandDiv").remove();
+          }
+        }
+        for (band of obj["bands"]) {
+          if (selectedBand === band.name) {
+            if (document.getElementById("bandDiv")) {
+              document.getElementById("bandDiv").remove();
+            }
+            const bandDiv = document.createElement("div");
+            bandDiv.id = "bandDiv";
+            const bandTitle = document.createElement("h2");
+            bandTitle.innerHTML = band.name;
+            const bandDescription = document.createElement("p");
+            bandDescription.innerHTML = band.description;
+            bandDiv.appendChild(bandTitle);
+            bandDiv.appendChild(bandDescription);
+            document.body.appendChild(bandDiv);
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Sky Rent</title>
+    <style>
+      body {
+        font-family: Calibri;
+        border: 1px solid blue;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: fit-content;
+        padding: 10px;
+      }
+
+      .mainTitle {
+        color: blue;
+        margin: 10px auto;
+      }
+
+      #items {
+        display: flex;
+        gap: 5px;
+      }
+
+      .itemDiv {
+        height: 200px;
+        width: 200px;
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      img {
+        height: 100px;
+      }
+
+      .itemDiv:hover {
+        background-color: yellow;
+      }
+
+      .itemDiv:hover h3 {
+        color: white;
+      }
+
+      #cartPrice {
+        color: darkorange;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="mainTitle">Sky Rent</h1>
+    <!-- Main title of the page -->
+    <div id="items"></div>
+    <!-- Container for items to rent -->
+    <h3 id="cartPrice"></h3>
+    <!-- Display total cart price -->
+    <div id="cart"></div>
+    <!-- Container for displaying selected cart items -->
+
+    <script>
+      clothes = {
+        pants: {
+          price: 150,
+          image: "images/pants.jpg"
+        },
+        boots: {
+          price: 300,
+          image: "images/boots.jpg"
+        },
+        coat: {
+          price: 220,
+          image: "images/coat.jpg"
+        },
+        snowboard: {
+          price: 500,
+          image: "images/snowboard.jpg"
+        }
+      };
+
+      function renderItems() {
+        const items = document.getElementById("items");
+        for (let item in clothes) {
+          const itemDiv = document.createElement("div");
+          itemDiv.classList.add("itemDiv");
+          items.appendChild(itemDiv);
+          const itemTitle = document.createElement("h3");
+          itemTitle.innerHTML = item;
+          itemDiv.appendChild(itemTitle);
+          const itemImage = document.createElement("img");
+          itemImage.src = clothes[item].image;
+          const itemPrice = document.createElement("h3");
+          itemPrice.innerHTML = clothes[item].price + " euro";
+          itemDiv.appendChild(itemImage);
+          itemDiv.appendChild(itemPrice);
+
+          itemDiv.addEventListener("click", function () {
+            addToCart(item, clothes[item].price);
+          });
+        }
+      }
+
+      var totalPrice = 0;
+      const cartPrice = document.getElementById("cartPrice");
+      cartPrice.innerHTML = "Total Price: " + totalPrice;
+
+      const cart = document.getElementById("cart");
+      const unorderedList = document.createElement("ul");
+      cart.appendChild(unorderedList);
+
+      itemStatus = {
+        pants: 0,
+        boots: 0,
+        coat: 0,
+        snowboard: 0
+      };
+
+      function addToCart(item, price) {
+        for (let clothingItem in clothes) {
+          if (clothingItem === item) {
+            itemStatus[clothingItem]++;
+            if (itemStatus[clothingItem] === 3) {
+              totalPrice += price;
+              cartPrice.innerHTML = "Total Price: " + totalPrice;
+              const listItem = document.createElement("li");
+              listItem.innerHTML = item + ": " + price + " euro";
+              unorderedList.appendChild(listItem);
+
+              const freeItem = document.createElement("li");
+              freeItem.innerHTML = item + ": 0 euro";
+              unorderedList.appendChild(freeItem);
+            } else {
+              totalPrice += price;
+              cartPrice.innerHTML = "Total Price: " + totalPrice;
+              const listItem = document.createElement("li");
+              listItem.innerHTML = item + ": " + price + " euro";
+              unorderedList.appendChild(listItem);
+            }
+          }
+        }
+      }
+
+      renderItems();
+    </script>
+  </body>
+</html>

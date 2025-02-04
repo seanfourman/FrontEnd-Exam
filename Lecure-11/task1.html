@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+      table {
+        background-color: black;
+      }
+      td {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: white;
+      }
+      .backgroundRed {
+        background-color: red;
+      }
+
+      .backgroundGreen {
+        background-color: green;
+      }
+
+      .backgroundYellow {
+        background-color: yellow;
+      }
+
+      .backgroundWhite {
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      let tbl = document.createElement("table");
+      for (var i = 0; i < 3; i++) {
+        let tr = document.createElement("tr");
+        let td = document.createElement("td");
+        tr.appendChild(td);
+        tbl.appendChild(tr);
+      }
+      document.body.appendChild(tbl);
+
+      function startTrafficLight() {
+        let directionForward = true;
+        const circles = document.querySelectorAll("td");
+        const redLight = circles[0];
+        const yellowLight = circles[1];
+        const greenLight = circles[2];
+
+        function turnRed() {
+          redLight.classList.add("backgroundRed");
+          setTimeout(() => {
+            redLight.classList.remove("backgroundRed");
+            turnYellow();
+          }, 5000);
+        }
+
+        function turnYellow() {
+          if (directionForward) {
+            yellowLight.classList.add("backgroundYellow");
+            setTimeout(() => {
+              yellowLight.classList.remove("backgroundYellow");
+              turnGreen();
+            }, 2000);
+            directionForward = false;
+          } else {
+            yellowLight.classList.add("backgroundYellow");
+            setTimeout(() => {
+              yellowLight.classList.remove("backgroundYellow");
+              turnRed();
+            }, 2000);
+            directionForward = true;
+          }
+        }
+
+        function turnGreen() {
+          greenLight.classList.add("backgroundGreen");
+          setTimeout(() => {
+            greenLight.classList.remove("backgroundGreen");
+            turnYellow();
+          }, 5000);
+        }
+
+        turnRed();
+      }
+
+      startTrafficLight();
+    </script>
+  </body>
+</html>

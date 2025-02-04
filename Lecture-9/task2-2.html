@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personalized Landing Page</title>
+  </head>
+  <body>
+    <h1>Welcome!</h1>
+    <p id="greeting"></p>
+
+    <script>
+      function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        const name = params.get("name") || "Guest";
+        const color = params.get("color") || "all colors";
+
+        return { color: color, name: name };
+      }
+
+      function displayGreeting() {
+        const data = getQueryParams();
+        const greetingMessage = `Hello, ${data.name}! you chose the color  ${data.color}.`;
+        document.getElementById("greeting").textContent = greetingMessage;
+      }
+
+      displayGreeting();
+    </script>
+  </body>
+</html>

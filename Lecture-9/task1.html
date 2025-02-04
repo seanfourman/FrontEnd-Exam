@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      form {
+        border: 2px solid lightgray;
+        border-radius: 5px;
+        padding: 50px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        max-width: 150px;
+        gap: 10px;
+        margin: 50px auto;
+      }
+
+      button {
+        background-color: cornflowerblue;
+        border: none;
+        border-radius: 5px;
+        max-width: 100px;
+        margin: 10px auto 0;
+        color: white;
+        padding: 5px;
+        cursor: pointer;
+      }
+
+      .error {
+        color: red;
+        font-weight: bold;
+        font-size: 11px;
+      }
+    </style>
+  </head>
+  <body></body>
+  <script>
+    function init() {
+      let users = {
+        "test1@gmail.com": "test123",
+        "test2@gmail.com": "hello456",
+        "test3@gmail.com": "working789"
+      };
+
+      let userStorage = JSON.parse(localStorage.getItem("Users")) || {};
+
+      /*
+      // Object.assign(userStorage, users);
+      for (let email in users) {
+        userStorage[email] = users[email];
+      }
+      */
+      //localStorage.setItem("Users", JSON.stringify(userStorage));
+      localStorage.setItem("Users", JSON.stringify(users));
+    }
+
+    function createForm() {
+      const form = document.createElement("form");
+      form.addEventListener("submit", (e) => e.preventDefault());
+
+      const title = document.createElement("h1");
+      title.innerHTML = "Login";
+
+      const emailLabel = document.createElement("label");
+      emailLabel.innerHTML = "Email:";
+
+      const emailInput = document.createElement("input");
+      emailInput.id = "emailInput";
+      emailInput.type = "email";
+
+      const passwordLabel = document.createElement("label");
+      passwordLabel.innerHTML = "Password:";
+
+      const passwordInput = document.createElement("input");
+      passwordInput.id = "passwordInput";
+      passwordInput.type = "password";
+
+      const formButton = document.createElement("button");
+      formButton.innerHTML = "Login";
+      formButton.addEventListener("click", login);
+
+      form.appendChild(title);
+      form.appendChild(emailLabel);
+      form.appendChild(emailInput);
+      form.appendChild(passwordLabel);
+      form.appendChild(passwordInput);
+      form.appendChild(formButton);
+
+      document.body.appendChild(form);
+    }
+
+    function login() {
+      const form = document.querySelector("form");
+
+      let emailInput = document.getElementById("emailInput").value;
+      let passwordInput = document.getElementById("passwordInput").value;
+
+      let users = JSON.parse(localStorage.getItem("Users")) || {};
+
+      if (users[emailInput] && users[emailInput] === passwordInput) {
+        alert("Login successful!");
+        window.location.href = "task1-2.html";
+      } else {
+        //alert("Invalid email or password.");
+        if (document.getElementById("errorMessage")) {
+          return;
+        }
+        const errorMessage = document.createElement("span");
+        errorMessage.id = "errorMessage";
+        errorMessage.innerHTML = "Invalid email or password.";
+        errorMessage.classList.add("error");
+        form.appendChild(errorMessage);
+      }
+    }
+
+    init();
+    createForm();
+  </script>
+</html>

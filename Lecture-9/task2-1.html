@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Rectangles</title>
+    <style>
+      .rectangle {
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+        margin: 10px;
+        cursor: pointer;
+      }
+
+      .red {
+        background-color: red;
+      }
+
+      .green {
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div><input type="text" placeholder="enter your name" /></div>
+    <div class="rectangle red" onclick="navigateToColorPage('red')"></div>
+    <div class="rectangle green" onclick="navigateToColorPage('green')"></div>
+
+    <script>
+      function navigateToColorPage(color) {
+        window.location.href = `page2.html?color=${color}&name=${document.querySelector("input").value}`;
+      }
+    </script>
+  </body>
+</html>
