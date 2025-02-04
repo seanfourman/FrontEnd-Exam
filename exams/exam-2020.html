@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      #d1 p {
+        background-color: red;
+      }
+
+      .c1 > p {
+        background-color: green;
+      }
+
+      #p2 {
+        background-color: blue;
+      }
+
+      div #p3 {
+        background-color: yellow;
+      }
+
+      div > #p4 {
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="d1">
+      <div id="d11" class="c1">
+        <p>P1</p>
+      </div>
+      <p id="p2">P2</p>
+      <p id="p3">P3</p>
+    </div>
+    <p id="p4">P4</p>
+  </body>
+</html>
